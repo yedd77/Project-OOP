@@ -12,6 +12,8 @@ public class Product_A_Tester {
         int ProdQuantity = 0;
         String ProdID;
         String ProdBrand;
+        float ProdStoCapacity = 0;
+        String ProdManuCompany;
 
 
         //user input
@@ -37,10 +39,22 @@ public class Product_A_Tester {
 
         System.out.print("Enter the brand of the product : ");
         ProdBrand = br.readLine();
+
+        try{
+            System.out.print("Enter the storage capacity of the product : ");
+            ProdStoCapacity = Float.parseFloat(br.readLine());
+        }catch(NumberFormatException e){
+            System.out.println("Exception Occured! Invalid Data");
+        }
+
+        System.out.print("Enter the manufacturing company of the product : ");
+        ProdManuCompany = br.readLine();
+
         br.close();
 
-        //create object for Product A
-        Product_A prod = new Product_A();
+        //create object 
+        Product_B prod2 = new Product_B();
+        Product_A prod = prod2; 
 
         //update variable value
         prod.setProductName(ProdName);
@@ -48,13 +62,17 @@ public class Product_A_Tester {
         prod.setProductQuantity(ProdQuantity);
         prod.setProductID(ProdID);
         prod.setProductBrand(ProdBrand);
+        prod2.setProductStoCapacity(ProdStoCapacity);
+        prod2.setProductManuCompany(ProdManuCompany);
 
         // Output
-        System.out.println("Product Name : " +prod.getProductName() );
-        System.out.println("Product Price : " +prod.getProductPrice() );
-        System.out.println("Quantity of product units in stock : " +prod.getProductQuantity());
-        System.out.println("Product ID Number : " +prod.getProductID() );
-        System.out.println("Product Brand : " +prod.getProductBrand());
-        System.out.println("Inventory Value :" + prod.Inventory_Value(ProdPrice, ProdQuantity));
+        System.out.println("Product Name : " +prod2.getProductName() );
+        System.out.println("Product Price : " +prod2.getProductPrice() );
+        System.out.println("Quantity of product units in stock : " +prod2.getProductQuantity());
+        System.out.println("Product ID Number : " +prod2.getProductID() );
+        System.out.println("Product Brand : " +prod2.getProductBrand());
+        System.out.println("Inventory Value : " +prod2.Inventory_Value());
+        System.out.println("Product Storage Capacity : " +prod2.getProductStoCapacity());
+        System.out.println("Product Manufacturing Company : " +prod2.getProductManuCompany());
     }
 }
